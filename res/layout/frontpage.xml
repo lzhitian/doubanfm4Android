@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingRight="@dimen/title_bar_paddingright"
+        android:background="@drawable/action_top_bar_blue">
+        <ImageView 
+            android:id="@+id/btn_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/indicator"/>
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/douban_title"
+            style="@style/TitleTextStyle"/>
+        <TextView 
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <ImageView 
+            android:id="@+id/btn_share"
+            style="@style/ActionIconStyle"
+            android:src="@drawable/action_top_bar_share"/>
+    </LinearLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="wrap_content"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:background="@drawable/viewpage_bg">
+        <android.support.v4.view.PagerTitleStrip
+            android:id="@+id/pagertitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top" />
+    </android.support.v4.view.ViewPager>
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:background="@drawable/action_bottom_bar">
+	    <ImageView
+	        android:layout_height="wrap_content"
+	        android:layout_width="0dip"
+	        android:layout_weight="1" />
+        <ImageView
+	        android:id="@+id/btn_like_dislike"
+	        style="@style/ActionIconStyle"
+	        android:src="@drawable/action_bottom_bar_like" />
+        <ImageView
+	        android:id="@+id/btn_del"
+	        style="@style/ActionIconStyle"
+	        android:src="@drawable/action_bottom_bar_del" />
+        <ImageView
+	        android:id="@+id/btn_next"
+	        style="@style/ActionIconStyle"
+	        android:src="@drawable/action_bottom_bar_next" />
+	    <ImageView
+	        android:layout_height="wrap_content"
+	        android:layout_width="0dip"
+	        android:layout_weight="1" />
+    </LinearLayout>
+</LinearLayout>
