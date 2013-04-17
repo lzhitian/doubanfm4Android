@@ -29,4 +29,14 @@
         <item name="android:paddingLeft">@dimen/action_icon_padding</item>
         <item name="android:paddingRight">@dimen/action_icon_padding</item>
     </style>
+    
+    <style
+        name="Widget.ListView.NoDivider"
+        parent="@android:Widget.ListView">
+        <item name="android:divider">@null</item>
+        <item name="android:dividerHeight">0dp</item>
+        <item name="android:cacheColorHint">@null</item>
+        <item name="android:listSelector">@android:color/transparent</item>
+        <item name="android:fadingEdge">none</item>
+    </style>
 </resources>
