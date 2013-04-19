@@ -40,6 +40,7 @@ public class ChannelFragment extends ListFragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
+        
         Log.i(lOG_TAG, "oncreateView");
         return inflater.inflate(R.layout.behindpage, null);
     }

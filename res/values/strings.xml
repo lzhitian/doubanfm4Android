@@ -7,5 +7,9 @@
     <string name="douban_title">豆瓣FM</string>
     <string name="login">登录</string>
     <string name="err_getchannels">获取频道列表错误</string>
+    <string name="fm_presonal">私人兆赫</string>
+    <string name="fm_redheat">红心兆赫</string>
+    <string name="fm_recent">最近播放</string>
+    <string name="app_exit">退出</string>
 
 </resources>

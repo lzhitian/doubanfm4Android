@@ -1,13 +1,8 @@
 package com.douban.fm;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 
 import com.douban.fm.util.DoubanFMConstants;
-import com.douban.fm.util.NetHelper;
 import com.slidingmenu.lib.SlidingMenu;
 
 import android.content.Intent;
@@ -63,9 +58,9 @@ public class MainActivity extends BaseActivity {
         Listviews.add(mLi.inflate(R.layout.viewpage, null));
         
         titles = new ArrayList<String>();
-        titles.add("tab1");
-        titles.add("tab2");
-        titles.add("tab3");
+        titles.add(getResources().getString(R.string.fm_presonal));
+        titles.add(getResources().getString(R.string.fm_redheat));
+        titles.add(getResources().getString(R.string.fm_recent));
         //设置viewpager的滑动事件
         viewPager.setOnPageChangeListener(new OnPageChangeListener() {
             @Override
@@ -90,6 +85,7 @@ public class MainActivity extends BaseActivity {
         viewPager.setCurrentItem(0);
         getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
         
+        startService(new Intent(MainActivity.this,MusicOpService.class).setAction(DoubanFMConstants.DOUBAN_FM_TYPE_N));
     }
     private OnClickListener mOnClickListener = new OnClickListener() {
         
@@ -98,56 +94,15 @@ public class MainActivity extends BaseActivity {
             // TODO Auto-generated method stub
             switch (v.getId()) {
             case R.id.btn_del:
-                stopService(new Intent(MainActivity.this,MusicOpService.class));
+                startService(new Intent(MainActivity.this,MusicOpService.class).setAction(DoubanFMConstants.DOUBAN_FM_TYPE_B));
                 break;
             case R.id.btn_like_dislike:
-                startService(new Intent(MainActivity.this,MusicOpService.class));
-                
-//                new Thread(){
-//                    public void run() {
-//                        super.run();
-//                        List<NameValuePair> params = new ArrayList<NameValuePair>();
-////                        params.add(new BasicNameValuePair("email", "zhenchentl@gmail.com"));
-////                        params.add(new BasicNameValuePair("password", "wykqinghua18"));
-////                        params.add(new BasicNameValuePair("app_name", "radio_desktop_win"));
-////                        params.add(new BasicNameValuePair("version", "100"));
-////                        String login_result = NetHelper.PostMethod(DoubanFMConstants.URL_DOUBANFM_LOGIN, params);
-//                        
-//                        params.add(new BasicNameValuePair("type", "n"));
-////                      params.add(new BasicNameValuePair("password", "wykqinghua18"));
-//                        params.add(new BasicNameValuePair("app_name", "radio_desktop_win"));
-//                        params.add(new BasicNameValuePair("version", "100"));
-//                        params.add(new BasicNameValuePair("channel", "0"));
-//                        String login_result = NetHelper.PostMethod(DoubanFMConstants.URL_DOUBANFM_SONG_ADDR, params);
-//                        Message message = new Message();
-////                        message.what = 
-//                        Bundle bundle = new Bundle();
-//                        bundle.putString(ACCOUNT_SERVICE, login_result);
-//                        message.setData(bundle);
-//                        mHandler.sendMessage(message);
-//                    }
-//                }.start();
-                
+//                Uri mUri = Uri.parse("http://mr3.douban.com/201304180903/e8c48b945830fea83850ea4a3f61b4a3/view/song/small/p350918.mp3");
+                startService(new Intent(MainActivity.this,MusicOpService.class).setAction(DoubanFMConstants.DOUBAN_FM_TYPE_R));
                 break;
-
-            default:
+            case R.id.btn_next:
+                startService(new Intent(MainActivity.this,MusicOpService.class).setAction(DoubanFMConstants.DOUBAN_FM_TYPE_S));
                 break;
-            }
-        }
-    };
-    
-    private Handler mHandler = new Handler(){
-        public void handleMessage(Message Msg){
-            switch (Msg.what) {
-            case MSG_WHAT_GETCHANNELS:
-                ArrayList<String> channels = Msg.getData().getStringArrayList(MSG_KEY_GETCHANNELS);
-                if(channels==null){
-                    Toast.makeText(MainActivity.this, R.string.err_getchannels, Toast.LENGTH_SHORT).show();
-                }else {
-                    
-                }
-                break;
-
             default:
                 break;
             }
